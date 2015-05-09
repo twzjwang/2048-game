@@ -17,6 +17,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -47,6 +48,11 @@ public:
     QLabel *pic_p17;
     QLabel *pic_p18;
     QLabel *pic_p19;
+    QPushButton *pushButton1;
+    QPushButton *pushButton2;
+    QPushButton *pushButton3;
+    QPushButton *pushButton4;
+    QLabel *gameover;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -119,6 +125,21 @@ public:
         pic_p19 = new QLabel(centralWidget);
         pic_p19->setObjectName(QStringLiteral("pic_p19"));
         pic_p19->setGeometry(QRect(450, 500, 100, 100));
+        pushButton1 = new QPushButton(centralWidget);
+        pushButton1->setObjectName(QStringLiteral("pushButton1"));
+        pushButton1->setGeometry(QRect(40, 150, 100, 30));
+        pushButton2 = new QPushButton(centralWidget);
+        pushButton2->setObjectName(QStringLiteral("pushButton2"));
+        pushButton2->setGeometry(QRect(180, 150, 100, 30));
+        pushButton3 = new QPushButton(centralWidget);
+        pushButton3->setObjectName(QStringLiteral("pushButton3"));
+        pushButton3->setGeometry(QRect(320, 150, 100, 30));
+        pushButton4 = new QPushButton(centralWidget);
+        pushButton4->setObjectName(QStringLiteral("pushButton4"));
+        pushButton4->setGeometry(QRect(460, 150, 100, 30));
+        gameover = new QLabel(centralWidget);
+        gameover->setObjectName(QStringLiteral("gameover"));
+        gameover->setGeometry(QRect(100, 300, 400, 200));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -159,6 +180,11 @@ public:
         pic_p17->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         pic_p18->setText(QApplication::translate("MainWindow", "TextLabel", 0));
         pic_p19->setText(QApplication::translate("MainWindow", "TextLabel", 0));
+        pushButton1->setText(QApplication::translate("MainWindow", "Start/Restart(Z)", 0));
+        pushButton2->setText(QApplication::translate("MainWindow", "AutoRun(X)", 0));
+        pushButton3->setText(QApplication::translate("MainWindow", "Rule", 0));
+        pushButton4->setText(QApplication::translate("MainWindow", "Info", 0));
+        gameover->setText(QString());
     } // retranslateUi
 
 };
