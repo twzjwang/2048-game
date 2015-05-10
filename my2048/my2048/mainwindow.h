@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include <time.h>
+#include <math.h>
 #include <stdlib.h>
 using namespace std;
 
@@ -32,6 +33,12 @@ public:
     bool dir_W();
     bool dir_E();
     bool dir_D();
+    bool dir_S(int x);
+    bool dir_A(int x);
+    bool dir_Q(int x);
+    bool dir_W(int x);
+    bool dir_E(int x);
+    bool dir_D(int x);
     void autoRun();
     void gameOver();
 
@@ -40,13 +47,14 @@ private slots:
 
     void on_pushButton2_clicked();
 
-
 private:
     Ui::MainWindow *ui;
     vector<int> board;
     vector<int> temp_board;
     vector<int> board_for_compare;
     QPixmap b[16];
+    int score,best,x;
+    int gameover_check;//gameover:1
 
 };
 
