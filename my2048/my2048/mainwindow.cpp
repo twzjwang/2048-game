@@ -3,29 +3,29 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow),score(0),best(0),gameover_check(0),
-    board(20),temp_board(20),board_for_compare(20)
+    ui(new Ui::MainWindow),score(0),pre_score(0),best(0),gameover_check(0),
+    board(20),pre_board(20),temp_board(20),board_for_compare(20)
 {
     ui->setupUi(this);
 
     srand((unsigned)time(NULL));
 
-    QPixmap b00("E:/code/QT/my2048/pic/0.jpg");
-    QPixmap b01("E:/code/QT/my2048/pic/1.jpg");
-    QPixmap b02("E:/code/QT/my2048/pic/2.jpg");
-    QPixmap b03("E:/code/QT/my2048/pic/3.jpg");
-    QPixmap b04("E:/code/QT/my2048/pic/4.jpg");
-    QPixmap b05("E:/code/QT/my2048/pic/5.jpg");
-    QPixmap b06("E:/code/QT/my2048/pic/6.jpg");
-    QPixmap b07("E:/code/QT/my2048/pic/7.jpg");
-    QPixmap b08("E:/code/QT/my2048/pic/8.jpg");
-    QPixmap b09("E:/code/QT/my2048/pic/9.jpg");
-    QPixmap b10("E:/code/QT/my2048/pic/10.jpg");
-    QPixmap b11("E:/code/QT/my2048/pic/11.jpg");
-    QPixmap b12("E:/code/QT/my2048/pic/12.jpg");
-    QPixmap b13("E:/code/QT/my2048/pic/13.jpg");
-    QPixmap b14("E:/code/QT/my2048/pic/14.jpg");
-    QPixmap b15("E:/code/QT/my2048/pic/15.jpg");
+    QPixmap b00("../pic/0.jpg");
+    QPixmap b01("../pic/1.jpg");
+    QPixmap b02("../pic/2.jpg");
+    QPixmap b03("../pic/3.jpg");
+    QPixmap b04("../pic/4.jpg");
+    QPixmap b05("../pic/5.jpg");
+    QPixmap b06("../pic/6.jpg");
+    QPixmap b07("../pic/7.jpg");
+    QPixmap b08("../pic/8.jpg");
+    QPixmap b09("../pic/9.jpg");
+    QPixmap b10("../pic/10.jpg");
+    QPixmap b11("../pic/11.jpg");
+    QPixmap b12("../pic/12.jpg");
+    QPixmap b13("../pic/13.jpg");
+    QPixmap b14("../pic/14.jpg");
+    QPixmap b15("../pic/15.jpg");
 
 
     /*QPixmap b[16];*/        b[0]=b00;    b[1]=b01;    b[2]=b02;    b[3]=b03;
@@ -36,8 +36,8 @@ MainWindow::MainWindow(QWidget *parent) :
     for(int i=1;i<20;i++){
         MainWindow::setP(i,0);
     }
-    MainWindow::Creat();
-    MainWindow::Creat();
+    MainWindow::Creat(0);
+    MainWindow::Creat(0);
 }
 
 MainWindow::~MainWindow()
@@ -101,7 +101,7 @@ void MainWindow::setP(int p,int n){
 }
 
 //creat new number
-bool MainWindow::Creat(){
+bool MainWindow::Creat(int x){
     QMutex pause;
     int temp_p=0,temp_num=1,b=0;
     for(int i=1;i<=19;i++){
@@ -120,7 +120,8 @@ bool MainWindow::Creat(){
     //randomly choose number 1(80%) 2(20%)
     if(rand()%5==0)
         temp_num=2;
-
+    if(x!=0)
+        temp_num=x;
     //input vector
     board[temp_p]=temp_num;
     return 1;
@@ -129,14 +130,17 @@ bool MainWindow::Creat(){
 void MainWindow::on_pushButton1_clicked(){
     ui->gameover->clear();
     score=0;
+    pre_score=0;
     gameover_check=0;
     //clear board
-    for(int i=1;i<20;i++)
+    for(int i=1;i<20;i++){
         board[i]=0;
+        pre_board[i]=0;
+    }
 
     //begin with two given number
-    MainWindow::Creat();
-    MainWindow::Creat();
+    MainWindow::Creat(0);
+    MainWindow::Creat(0);
     MainWindow::myShow();
 
 }
@@ -147,8 +151,20 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
         MainWindow::on_pushButton1_clicked();
     }
 
+    //press C
+    if(event->key()==Qt::Key_C){
+        MainWindow::on_pushButton3_clicked();
+    }
+
     if(gameover_check==1)
         return;
+
+    pre_board=board;
+    pre_score=score;
+
+    //press H
+    if(event->key()==Qt::Key_H)
+        MainWindow::autoRun_2(0);
 
     //press X
     if(event->key()==Qt::Key_X)
@@ -157,49 +173,50 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     //press S
     if(event->key()==Qt::Key_S){
         if(MainWindow::dir_S()==1)
-            MainWindow::Creat();
+            MainWindow::Creat(0);
         MainWindow::myShow();
     }
 
     //press A
     if(event->key()==Qt::Key_A){
         if(MainWindow::dir_A()==1)
-            MainWindow::Creat();
+            MainWindow::Creat(0);
         MainWindow::myShow();
     }
 
     //press Q
     if(event->key()==Qt::Key_Q){
         if(MainWindow::dir_Q()==1)
-            MainWindow::Creat();
+            MainWindow::Creat(0);
         MainWindow::myShow();
     }
 
     //press W
     if(event->key()==Qt::Key_W){
         if(MainWindow::dir_W()==1)
-            MainWindow::Creat();
+            MainWindow::Creat(0);
         MainWindow::myShow();
     }
 
     //press E
     if(event->key()==Qt::Key_E){
         if(MainWindow::dir_E()==1)
-            MainWindow::Creat();
+            MainWindow::Creat(0);
         MainWindow::myShow();
     }
 
     //press D
     if(event->key()==Qt::Key_D){
         if(MainWindow::dir_D()==1)
-             MainWindow::Creat();
+             MainWindow::Creat(0);
         MainWindow::myShow();
     }
 }
 
-void MainWindow::do_temp_board(){
+void MainWindow::do_temp_board(int x){
     bool p[20]={0};
     int t,z,s;
+
     //column 1
     for(int i=2;i>=1;i--){
         //last 0
@@ -219,7 +236,7 @@ void MainWindow::do_temp_board(){
             else if(temp_board[t]!=temp_board[i]&&temp_board[t]!=0)
                 break;
             else if(temp_board[t]==temp_board[i]){
-                if(p[s]==0)
+                if(p[t]==0)
                     s=t;
                 break;
             }
@@ -230,8 +247,9 @@ void MainWindow::do_temp_board(){
         if(s==0&&z==0);
         else if(s>z){
             temp_board[s]=temp_board[i]+1;
-            temp_board[i]=0;
-            score=score+pow(2,temp_board[s]);
+            temp_board[i]=0;            
+            if(x==1)
+                score=score+pow(2,temp_board[s]);
             p[s]=1;
         }
         else{
@@ -261,7 +279,7 @@ void MainWindow::do_temp_board(){
             else if(temp_board[t]!=temp_board[i]&&temp_board[t]!=0)
                 break;
             else if(temp_board[t]==temp_board[i]){
-                if(p[s]==0)
+                if(p[t]==0)
                     s=t;
                 break;
             }
@@ -273,7 +291,8 @@ void MainWindow::do_temp_board(){
         else if(s>z){
             temp_board[s]=temp_board[i]+1;
             temp_board[i]=0;
-            score=score+pow(2,temp_board[s]);
+            if(x==1)
+                score=score+pow(2,temp_board[s]);
             p[s]=1;
         }
         else{
@@ -303,7 +322,7 @@ void MainWindow::do_temp_board(){
             else if(temp_board[t]!=temp_board[i]&&temp_board[t]!=0)
                 break;
             else if(temp_board[t]==temp_board[i]){
-                if(p[s]==0)
+                if(p[t]==0)
                     s=t;
                 break;
             }
@@ -315,7 +334,8 @@ void MainWindow::do_temp_board(){
         else if(s>z){
             temp_board[s]=temp_board[i]+1;
             temp_board[i]=0;
-            score=score+pow(2,temp_board[s]);
+            if(x==1)
+                score=score+pow(2,temp_board[s]);
             p[s]=1;
         }
         else{
@@ -350,7 +370,7 @@ void MainWindow::do_temp_board(){
             else if(temp_board[t]!=temp_board[i]&&temp_board[t]!=0)
                 break;
             else if(temp_board[t]==temp_board[i]){
-                if(p[s]==0)
+                if(p[t]==0)
                     s=t;
                 break;
             }
@@ -362,7 +382,8 @@ void MainWindow::do_temp_board(){
         else if(s>z){
             temp_board[s]=temp_board[i]+1;
             temp_board[i]=0;
-            score=score+pow(2,temp_board[s]);
+            if(x==1)
+                score=score+pow(2,temp_board[s]);
             p[s]=1;
         }
         else{
@@ -392,7 +413,7 @@ void MainWindow::do_temp_board(){
             else if(temp_board[t]!=temp_board[i]&&temp_board[t]!=0)
                 break;
             else if(temp_board[t]==temp_board[i]){
-                if(p[s]==0)
+                if(p[t]==0)
                     s=t;
                 break;
             }
@@ -404,7 +425,8 @@ void MainWindow::do_temp_board(){
         else if(s>z){
             temp_board[s]=temp_board[i]+1;
             temp_board[i]=0;
-            score=score+pow(2,temp_board[s]);
+            if(x==1)
+                score=score+pow(2,temp_board[s]);
             p[s]=1;
         }
         else{
@@ -434,7 +456,7 @@ bool MainWindow::dir_S(int x){
     temp_board=board;
 
     board_for_compare=temp_board;
-    MainWindow::do_temp_board();
+    MainWindow::do_temp_board(0);
     if(board_for_compare==temp_board)
         return x;
     return 1;
@@ -511,7 +533,7 @@ bool MainWindow::dir_A(int x){
     temp_board[19]=board[12];
 
     board_for_compare=temp_board;
-    MainWindow::do_temp_board();
+    MainWindow::do_temp_board(0);
     if(board_for_compare==temp_board)
         return x;
     return 1;
@@ -588,7 +610,7 @@ bool MainWindow::dir_Q(int x){
     temp_board[19]=board[3];
 
     board_for_compare=temp_board;
-    MainWindow::do_temp_board();
+    MainWindow::do_temp_board(0);
     if(board_for_compare==temp_board)
         return x;
     return 1;
@@ -614,7 +636,7 @@ bool MainWindow::dir_W(int x){
         temp_board[i]=board[20-i];
 
     board_for_compare=temp_board;
-    MainWindow::do_temp_board();
+    MainWindow::do_temp_board(0);
     if(board_for_compare==temp_board)
         return x;
     return 1;
@@ -691,7 +713,7 @@ bool MainWindow::dir_E(int x){
     temp_board[1]=board[12];
 
     board_for_compare=temp_board;
-    MainWindow::do_temp_board();
+    MainWindow::do_temp_board(0);
     if(board_for_compare==temp_board)
         return x;
     return 1;
@@ -768,7 +790,7 @@ bool MainWindow::dir_D(int x){
     temp_board[1]=board[3];
 
     board_for_compare=temp_board;
-    MainWindow::do_temp_board();
+    MainWindow::do_temp_board(0);
     if(board_for_compare==temp_board)
         return x;
     return 1;
@@ -786,49 +808,147 @@ void MainWindow::autoRun()
     //press S
     if(x==0){
         if(MainWindow::dir_S()==1)
-            MainWindow::Creat();
+            MainWindow::Creat(0);
         MainWindow::myShow();
     }
 
     //press A
     else if(x==1){
         if(MainWindow::dir_A()==1)
-            MainWindow::Creat();
+            MainWindow::Creat(0);
         MainWindow::myShow();
     }
 
     //press Q
     else if(x==2){
         if(MainWindow::dir_Q()==1)
-            MainWindow::Creat();
+            MainWindow::Creat(0);
         MainWindow::myShow();
     }
 
     //press W
     else if(x==3){
         if(MainWindow::dir_W()==1)
-            MainWindow::Creat();
+            MainWindow::Creat(0);
         MainWindow::myShow();
     }
 
     //press E
     else if(x==4){
         if(MainWindow::dir_E()==1)
-            MainWindow::Creat();
+            MainWindow::Creat(0);
         MainWindow::myShow();
     }
 
     //press D
     else if(x==5){
         if(MainWindow::dir_D()==1)
-            MainWindow::Creat();
+            MainWindow::Creat(0);
         MainWindow::myShow();
+    }
+}
+
+void MainWindow::autoRun_2(int x){
+    int b=0;
+    if(MainWindow::dir_D(0)==1 && b==0){
+        MainWindow::dir_D();
+        MainWindow::Creat(x);
+        if((MainWindow::dir_S(0)+MainWindow::dir_A(0)+MainWindow::dir_Q(0)+MainWindow::dir_W(0)+MainWindow::dir_E(0)+MainWindow::dir_D(0))==0){
+            MainWindow::on_pushButton3_clicked();
+            b++;
+        }
+        else
+            MainWindow::myShow();
+    }
+    else if(MainWindow::dir_D(0)!=1 && b==0)
+        b++;
+
+    if(MainWindow::dir_S(0)==1 && b==1){
+        MainWindow::dir_S();
+        MainWindow::Creat(x);
+        if((MainWindow::dir_S(0)+MainWindow::dir_A(0)+MainWindow::dir_Q(0)+MainWindow::dir_W(0)+MainWindow::dir_E(0)+MainWindow::dir_D(0))==0){
+            MainWindow::on_pushButton3_clicked();
+            b++;
+        }
+        else
+            MainWindow::myShow();
+    }
+    else if(MainWindow::dir_S(0)!=1 && b==1)
+        b++;
+
+    if(MainWindow::dir_A(0)==1 && b==2){
+        MainWindow::dir_A();
+        MainWindow::Creat(x);
+        if((MainWindow::dir_S(0)+MainWindow::dir_A(0)+MainWindow::dir_Q(0)+MainWindow::dir_W(0)+MainWindow::dir_E(0)+MainWindow::dir_D(0))==0){
+            MainWindow::on_pushButton3_clicked();
+            b++;
+        }
+        else
+            MainWindow::myShow();
+    }
+    else if(MainWindow::dir_A(0)!=1 && b==2)
+        b++;
+
+    if(MainWindow::dir_E(0)==1 && b==3){
+        MainWindow::dir_E();
+        MainWindow::Creat(x);
+        if((MainWindow::dir_S(0)+MainWindow::dir_A(0)+MainWindow::dir_Q(0)+MainWindow::dir_W(0)+MainWindow::dir_E(0)+MainWindow::dir_D(0))==0){
+            MainWindow::on_pushButton3_clicked();
+            b++;
+        }
+        else
+            MainWindow::myShow();
+    }
+    else if(MainWindow::dir_E(0)!=1 && b==3)
+        b++;
+
+    if(MainWindow::dir_Q(0)==1 && b==4){
+        MainWindow::dir_Q();
+        MainWindow::Creat(x);
+        if((MainWindow::dir_S(0)+MainWindow::dir_A(0)+MainWindow::dir_Q(0)+MainWindow::dir_W(0)+MainWindow::dir_E(0)+MainWindow::dir_D(0))==0){
+            MainWindow::on_pushButton3_clicked();
+            b++;
+        }
+        else
+            MainWindow::myShow();
+    }
+    else if(MainWindow::dir_Q(0)!=1 && b==4)
+        b++;
+
+    if(MainWindow::dir_W(0)==1 && b==5){
+        MainWindow::dir_W();
+        MainWindow::Creat(x);
+        if((MainWindow::dir_S(0)+MainWindow::dir_A(0)+MainWindow::dir_Q(0)+MainWindow::dir_W(0)+MainWindow::dir_E(0)+MainWindow::dir_D(0))==0){
+            MainWindow::on_pushButton3_clicked();
+            b++;
+        }
+        else
+            MainWindow::myShow();
+    }
+    else if(MainWindow::dir_W(0)!=1 && b==5)
+        b++;
+
+    if(b>=6&&x==0){
+        MainWindow::autoRun_2(2);
+    }
+    else if(b>=6&&x==2){
+        MainWindow::autoRun();
     }
 }
 
 void MainWindow::gameOver(){
     gameover_check=1;
-    QPixmap gameover("E:/code/QT/my2048/pic/gameover.jpg");
+    QPixmap gameover("../pic/gameover.jpg");
     ui->gameover->setPixmap(gameover);
 }
 
+
+void MainWindow::on_pushButton3_clicked(){
+    //if(gameover_check==1)
+    //    return;
+    gameover_check=0;
+    ui->gameover->clear();
+    board=pre_board;
+    score=pre_score;
+    MainWindow::myShow();
+}

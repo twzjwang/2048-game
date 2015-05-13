@@ -57,6 +57,7 @@ public:
     QLabel *best_display;
     QLabel *label;
     QLabel *label_2;
+    QPushButton *pushButton3;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -161,6 +162,9 @@ public:
         label_2 = new QLabel(centralWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setGeometry(QRect(20, 20, 250, 90));
+        pushButton3 = new QPushButton(centralWidget);
+        pushButton3->setObjectName(QStringLiteral("pushButton3"));
+        pushButton3->setGeometry(QRect(320, 150, 100, 30));
         MainWindow->setCentralWidget(centralWidget);
         pic_bk->raise();
         pic_p10->raise();
@@ -191,6 +195,7 @@ public:
         label->raise();
         gameover->raise();
         label_2->raise();
+        pushButton3->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 600, 25));
@@ -239,6 +244,7 @@ public:
         best_display->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:26pt; color:#ffffff;\">0</span></p></body></html>", 0));
         label->setText(QString());
         label_2->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:36pt; font-weight:600; font-style:italic; color:#ffffff;\">MY2048</span></p></body></html>", 0));
+        pushButton3->setText(QApplication::translate("MainWindow", "Undo(C)", 0));
     } // retranslateUi
 
 };

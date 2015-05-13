@@ -24,9 +24,9 @@ public:
 
     void myShow();
     void setP(int,int);
-    bool Creat();
+    bool Creat(int);
     void keyPressEvent(QKeyEvent *);
-    void do_temp_board();
+    void do_temp_board(int x=1);
     bool dir_S();
     bool dir_A();
     bool dir_Q();
@@ -40,6 +40,7 @@ public:
     bool dir_E(int x);
     bool dir_D(int x);
     void autoRun();
+    void autoRun_2(int);
     void gameOver();
 
 private slots:
@@ -47,13 +48,16 @@ private slots:
 
     void on_pushButton2_clicked();
 
+    void on_pushButton3_clicked();
+
 private:
     Ui::MainWindow *ui;
     vector<int> board;
+    vector<int> pre_board;
     vector<int> temp_board;
     vector<int> board_for_compare;
     QPixmap b[16];
-    int score,best,x;
+    int score,pre_score,best,x;
     int gameover_check;//gameover:1
 
 };
