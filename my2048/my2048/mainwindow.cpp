@@ -26,11 +26,14 @@ MainWindow::MainWindow(QWidget *parent) :
     QPixmap b13("../pic/13.jpg");
     QPixmap b14("../pic/14.jpg");
     QPixmap b15("../pic/15.jpg");
+    QPixmap b16("../pic/16.jpg");
+    QPixmap b17("../pic/17.jpg");
+    QPixmap b18("../pic/18.jpg");
 
-
-    /*QPixmap b[16];*/        b[0]=b00;    b[1]=b01;    b[2]=b02;    b[3]=b03;
+    /*QPixmap b[18];*/        b[0]=b00;    b[1]=b01;    b[2]=b02;    b[3]=b03;
     b[4]=b04;    b[5]=b05;    b[6]=b06;    b[7]=b07;    b[8]=b08;    b[9]=b09;
     b[10]=b10;   b[11]=b11;   b[12]=b12;   b[13]=b13;   b[14]=b14;   b[15]=b15;
+    b[16]=b16;   b[17]=b17;   b[18]=b18;
 
     //default : 0
     for(int i=1;i<20;i++){
@@ -146,7 +149,7 @@ void MainWindow::on_pushButton1_clicked(){
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *event){
-    //press Z
+   //press Z
     if(event->key()==Qt::Key_Z){
         MainWindow::on_pushButton1_clicked();
     }
@@ -929,6 +932,9 @@ void MainWindow::autoRun_2(int x){
         b++;
 
     if(b>=6&&x==0){
+        MainWindow::autoRun_2(1);
+    }
+    else if(b>=6&&x==1){
         MainWindow::autoRun_2(2);
     }
     else if(b>=6&&x==2){

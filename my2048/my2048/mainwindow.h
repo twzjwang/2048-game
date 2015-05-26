@@ -8,6 +8,7 @@
 #include <time.h>
 #include <math.h>
 #include <stdlib.h>
+
 using namespace std;
 
 namespace Ui {
@@ -56,7 +57,7 @@ private:
     vector<int> pre_board;
     vector<int> temp_board;
     vector<int> board_for_compare;
-    QPixmap b[16];
+    QPixmap b[19];
     int score,pre_score,best,x;
     int gameover_check;//gameover:1
 

@@ -265,6 +265,7 @@ debug\moc_mainwindow.cpp: ..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidg
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\qtouchdevice.h \
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qtabwidget.h \
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\qicon.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\QKeyEvent \
 		..\my2048\mainwindow.h
 	E:\software\Qt\5.4\msvc2013_64\bin\moc.exe $(DEFINES) -D_MSC_VER=1800 -D_WIN32 -D_WIN64 -IE:/software/Qt/5.4/msvc2013_64/mkspecs/win32-msvc2013 -IE:/code/QT/my2048/my2048 -IE:/software/Qt/5.4/msvc2013_64/include -IE:/software/Qt/5.4/msvc2013_64/include/QtWidgets -IE:/software/Qt/5.4/msvc2013_64/include/QtGui -IE:/software/Qt/5.4/msvc2013_64/include/QtANGLE -IE:/software/Qt/5.4/msvc2013_64/include/QtCore -I. ..\my2048\mainwindow.h -o debug\moc_mainwindow.cpp
 
@@ -394,6 +395,7 @@ debug\main.obj: ..\my2048\main.cpp ..\my2048\mainwindow.h \
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\qtouchdevice.h \
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qtabwidget.h \
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\qicon.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\QKeyEvent \
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\QApplication \
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qapplication.h \
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtCore\qcoreapplication.h \
@@ -508,7 +510,51 @@ debug\mainwindow.obj: ..\my2048\mainwindow.cpp ..\my2048\mainwindow.h \
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\qtouchdevice.h \
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qtabwidget.h \
 		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\qicon.h \
-		ui_mainwindow.h
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\QKeyEvent \
+		ui_mainwindow.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtCore\QVariant \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\QAction \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qaction.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qactiongroup.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\QApplication \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qapplication.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtCore\qcoreapplication.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtCore\qeventloop.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qdesktopwidget.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\qguiapplication.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\qinputmethod.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\QButtonGroup \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qbuttongroup.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\QHeaderView \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qheaderview.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractitemview.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractscrollarea.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qframe.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtCore\qabstractitemmodel.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtCore\qitemselectionmodel.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractitemdelegate.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qstyleoption.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractspinbox.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtGui\qvalidator.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtCore\qregularexpression.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qslider.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractslider.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qstyle.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qtabbar.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qrubberband.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\QLabel \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qlabel.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\QMenuBar \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qmenubar.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qmenu.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\QPushButton \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qpushbutton.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qabstractbutton.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\QStatusBar \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qstatusbar.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\QToolBar \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\qtoolbar.h \
+		..\..\..\..\software\Qt\5.4\msvc2013_64\include\QtWidgets\QWidget
 
 debug\moc_mainwindow.obj: debug\moc_mainwindow.cpp 
 
